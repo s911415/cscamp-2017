@@ -11,15 +11,6 @@ const
     backgroundCanvas = document.getElementById('background'),
     drawerCtx = drawerCanvas.getContext('2d'),
     backgroundCtx = backgroundCanvas.getContext('2d');
-let brushFillColor = '#000000',
-    brushStrokeColor = '#000000',
-    brushStrokeWidth = 3;
-let currentMode;
-let isMouseDown = false, startPoint;
-let currentShape = 'R',
-    shapeStroke = false,
-    shapeFill = true;
-
 
 drawerCanvas.width = backgroundCanvas.width = CANVAS_WIDTH;
 drawerCanvas.height = backgroundCanvas.height = CANVAS_HEIGHT;
@@ -28,12 +19,33 @@ canvasContainer.style.height = CANVAS_HEIGHT + 'px';
 backgroundCtx.fillStyle = "#FFFFFF";
 backgroundCtx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
+
+let currentMode;
+
 function setCurrentMode(mode) {
     currentMode = mode;
     actionBar.attr('mode', mode);
     actionBtns.prop('disabled', false);
     actionBtns.filter('[data-type="' + mode + '"]').prop('disabled', true);
 }
+
+setCurrentMode('B');
+
+actionBtns.click(function () {
+    let mode = this.getAttribute('data-type');
+
+    setCurrentMode(mode);
+});
+
+
+let brushFillColor = '#000000',
+    brushStrokeColor = '#000000',
+    brushStrokeWidth = 3;
+let isMouseDown = false, startPoint;
+let currentShape = 'R',
+    shapeStroke = false,
+    shapeFill = true;
+
 
 function applyDrawerToBackground() {
     backgroundCtx.drawImage(drawerCanvas, 0, 0);
@@ -168,7 +180,7 @@ $("#canvasContainer").bind('mousedown', function (e) {
         drawerCtx.beginPath();
         drawerCtx.moveTo(startPoint.x, startPoint.y);
         drawerCtx.lineTo(currentPoint.x, currentPoint.y);
-        drawerCtx.closePath();
+        
         drawerCtx.stroke();
         startPoint = currentPoint;
     } else if (currentMode === 'S') {
@@ -200,13 +212,6 @@ $("#canvasContainer").bind('mousedown', function (e) {
     if (!isMouseDown) return;
     applyDrawerToBackground();
     isMouseDown = false;
-});
-
-setCurrentMode('B');
-actionBtns.click(function () {
-    let mode = this.getAttribute('data-type');
-
-    setCurrentMode(mode);
 });
 
 //Bind Event
