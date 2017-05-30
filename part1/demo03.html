@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo03</title>
+    <style type="text/css">
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<canvas id="example" width="500" height="500"></canvas>
+
+<script type="text/javascript">
+    "use strict";
+    function draw() {
+        let canvas = document.getElementById('example');
+        let ctx = canvas.getContext('2d');
+
+        ctx.fillStyle = "yellow";	//設定填顏為黃色
+        ctx.strokeStyle = "blue";	//設定邊框為藍色
+        ctx.beginPath();			//開始一個新路徑
+        ctx.rect(0, 0, 50, 50);		//設定一個矩形的路徑
+        ctx.fill(); 				//填滿目前路徑
+
+        ctx.beginPath();			//開始一個新路徑
+        ctx.rect(20, 20, 50, 50);	//設定一個矩形的路徑
+        ctx.stroke();				//在目前路徑上畫線
+    }
+
+    draw();
+</script>
+</body>
+</html>
