@@ -1,0 +1,36 @@
+@charset "UTF-8";
+#canvasContainer {
+    position: relative;
+    border: 1px solid #000;
+    cursor: crosshair;
+}
+
+#canvasContainer > canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+
+#drawer{
+    z-index: 2 !important;
+}
+
+#actionBar [data-for] {
+    display: none;
+
+}
+
+#actionBar .row{
+    margin-bottom: .5em;
+}
+
+#actionBar[mode="B"] [data-for="B"],
+#actionBar[mode="S"] [data-for="S"],
+#actionBar[mode="File"] [data-for="File"],
+#actionBar[mode="B"] [data-for="BS"],
+#actionBar[mode="S"] [data-for="BS"]
+
+{
+    display: block
+}

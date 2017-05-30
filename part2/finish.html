@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Painter</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="../common/js/jquery-3.2.1.min.js"></script>
+
+</head>
+<body>
+<div id="actionBar">
+    <button data-type="File">檔案</button>
+    <button data-type="B">筆刷</button>
+    <button data-type="S">圖形</button>
+    <hr/>
+    <div class="row" data-for="BS">
+        <label for="fillColor">
+            填滿顏色
+            <input type="color" id="fillColor">
+        </label>
+        <label for="strokeColor">
+            邊框顏色
+            <input type="color" id="strokeColor">
+        </label>
+        <label for="lineWidth">
+            線寬
+            <input type="range" id="lineWidth" value="3" min="1"/>
+            <span id="lineWidthVal">3</span>
+        </label>
+    </div>
+    <div data-for="File" class="row">
+        <p>
+            <label>
+                開啟舊檔
+                <input type="file" accept="image/*" id="openFile"/>
+            </label>
+        </p>
+        <p>
+            <label>
+                存檔類型
+                <select id="fileType">
+                    <option value="image/png" data-ext=".png">PNG</option>
+                    <option value="image/jpeg" data-ext=".jpg">JPEG</option>
+                    <option value="image/bmp" data-ext=".bmp">BMP</option>
+                </select>
+            </label>
+            &nbsp;
+            <label>
+                檔案名稱
+                <input type="text" id="fileName" value="image"/>
+            </label>
+            <button id="save">存檔</button>
+        </p>
+
+    </div>
+    <div data-for="B" class="row">
+
+    </div>
+    <div data-for="S" class="row">
+        <p>
+            <label>
+                邊框
+                <input type="checkbox" id="strokeShape">
+            </label>
+            <label>
+                填滿
+                <input type="checkbox" id="fillShape" checked>
+            </label>
+        </p>
+        <p>
+            <label>
+                <input type="radio" name="shape" value="R" checked>
+                矩形
+            </label>
+            <label>
+                <input type="radio" name="shape" value="S">
+                正方形
+            </label>
+            <label>
+                <input type="radio" name="shape" value="O">
+                橢圓
+            </label>
+            <label>
+                <input type="radio" name="shape" value="C">
+                圓型
+            </label>
+            <label>
+                <input type="radio" name="shape" value="Star">
+                星星
+            </label>
+        </p>
+    </div>
+</div>
+<div id="canvasContainer">
+    <canvas id="drawer"></canvas>
+    <canvas id="background"></canvas>
+</div>
+
+
+<script src="js/script.js"></script>
+</body>
+</html>
