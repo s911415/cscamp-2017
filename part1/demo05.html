@@ -23,6 +23,7 @@
         ctx.beginPath();			//開始一個新路徑
         ctx.moveTo(100, 75);			//移動到(100, 75)
 
+        //arc(x, y, radius, startAngle, endAngle);
         //在目前路徑上弧形，從45度到315度
         ctx.arc(100, 75, 50, Math.PI / 4, 7 * Math.PI / 4);
         ctx.closePath();			//結束目前路徑(移到起點)
